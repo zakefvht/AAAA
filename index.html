@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSTEM DESTROYED - ISLEM HD</title>
+  <style>
+    /* استيراد خطوط الرعب والاختراق */
+    @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Share+Tech+Mono&family=Nosifer&display=swap');
+
+    :root {
+      --blood: #8a0303;
+      --neon-red: #ff003c;
+      --dark-void: #020000;
+      --cyan-glitch: #00ffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--dark-void);
+      color: var(--neon-red);
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+      cursor: crosshair;
+      user-select: none;
+    }
+
+    /* تأثير تشويش الشاشة (Static Noise) والخطوط القديمة */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* إعدادات الفيديو الخلفي مع فلاتر تدميرية */
+    .video-background {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-background video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      /* تحويل الفيديو إلى كابوس أحمر وأسود */
+      filter: grayscale(100%) contrast(2) brightness(0.4) sepia(100%) hue-rotate(320deg) saturate(10);
+      animation: screen-shake 4s infinite;
+    }
+
+    /* طبقة ظلام متدرجة تتركز في الأطراف (Vignette) */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, rgba(10,0,0,0.4) 0%, rgba(0,0,0,0.95) 100%);
+      z-index: 1;
+    }
+
+    /* الحاوية الرئيسية */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    /* النص الرئيسي (HACKED BY) */
+    .glitch-title {
+      font-family: 'Creepster', cursive;
+      font-size: clamp(4rem, 10vw, 9rem);
+      color: #ffffff;
+      text-shadow: 0 0 20px var(--neon-red), 0 0 50px var(--blood);
+      margin: 0;
+      position: relative;
+      letter-spacing: 5px;
+      animation: text-pulse 2s infinite alternate;
+    }
+
+    .glitch-title::before, .glitch-title::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: transparent;
+    }
+
+    /* ألوان الجليتش السامة (أحمر وسماوي) */
+    .glitch-title::before {
+      left: 4px;
+      text-shadow: -3px 0 var(--cyan-glitch);
+      clip: rect(24px, 550px, 90px, 0);
+      animation: glitch-anim 2s infinite linear alternate-reverse;
+    }
+
+    .glitch-title::after {
+      left: -4px;
+      text-shadow: 3px 0 var(--neon-red);
+      clip: rect(85px, 550px, 140px, 0);
+      animation: glitch-anim 2.5s infinite linear alternate-reverse;
+    }
+
+    /* عبارة FUCK U SERVER - تحذير نظام حرج */
+    .danger-text {
+      font-family: 'Nosifer', cursive; /* خط يبدو وكأنه يقطر دماً */
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--neon-red);
+      margin-top: 30px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--blood), 0 0 30px var(--neon-red);
+      animation: flicker 0.15s infinite; /* وميض سريع جداً ومرعب */
+    }
+
+    /* زر الديسكورد - تصميم هاكر خطير */
+    .discord-btn {
+      display: inline-block;
+      margin-top: 50px;
+      padding: 15px 40px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(20, 0, 0, 0.8);
+      border: 2px solid var(--neon-red);
+      box-shadow: 0 0 15px var(--neon-red) inset, 0 0 30px var(--blood);
+      letter-spacing: 3px;
+      text-shadow: 0 0 8px #fff;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* تأثير الدم أو الخطر عند تمرير الماوس */
+    .discord-btn:hover {
+      background: var(--neon-red);
+      color: #000;
+      text-shadow: none;
+      box-shadow: 0 0 50px var(--neon-red), 0 0 100px var(--blood);
+      transform: scale(1.1) rotate(-1deg);
+    }
+
+    /* التوقيع - The Hacker King */
+    .hacker-king {
+      margin-top: 50px;
+      font-size: 1.8rem;
+      color: #555;
+      letter-spacing: 5px;
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+
+    .hacker-king span {
+      color: var(--neon-red);
+      font-weight: bold;
+      animation: flicker 3s infinite alternate;
+    }
+
+    /* الأنيميشن والتأثيرات الحركية */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+      25%, 75% { opacity: 0.1; text-shadow: none; }
+    }
+
+    @keyframes text-pulse {
+      0% { text-shadow: 0 0 10px var(--blood), 0 0 20px var(--neon-red); transform: scale(1); }
+      100% { text-shadow: 0 0 30px var(--neon-red), 0 0 60px #ff0000, 0 0 80px var(--blood); transform: scale(1.02); }
+    }
+
+    @keyframes screen-shake {
+      0%, 100% { transform: translate(0, 0); }
+      10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 2px); }
+      20%, 40%, 60%, 80% { transform: translate(3px, -2px); }
+    }
+
+    @keyframes glitch-anim {
+      0% { clip: rect(10px, 9999px, 31px, 0); transform: translate(0); }
+      10% { clip: rect(40px, 9999px, 50px, 0); transform: translate(-3px, 3px); }
+      20% { clip: rect(20px, 9999px, 80px, 0); transform: translate(3px, -3px); }
+      30% { clip: rect(15px, 9999px, 95px, 0); transform: translate(-3px, -3px); }
+      40% { clip: rect(35px, 9999px, 70px, 0); transform: translate(3px, 3px); }
+      50% { clip: rect(95px, 9999px, 5px, 0); transform: translate(-2px, 2px); }
+      60% { clip: rect(25px, 9999px, 85px, 0); transform: translate(2px, -2px); }
+      70% { clip: rect(45px, 9999px, 60px, 0); transform: translate(-2px, -2px); }
+      80% { clip: rect(30px, 9999px, 75px, 0); transform: translate(2px, 2px); }
+      90% { clip: rect(50px, 9999px, 55px, 0); transform: translate(-3px, 1px); }
+      100% { clip: rect(90px, 9999px, 10px, 0); transform: translate(0); }
+    }
+
+    /* وميض الشاشة بالكامل (رعب مفاجئ) */
+    .flash-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: var(--neon-red);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- شاشة الوميض المفاجئ -->
+  <div class="flash-overlay" id="flash"></div>
+
+  <div class="video-background">
+    <!-- تأكد من وضع مسار الفيديو الصحيح هنا -->
+    <video id="bgVideo" autoplay loop muted playsinline>
+      <source src="Al qawlo qawlo Sawarim _ (Slowed - Reverb) Nasheed Abu Ali.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <!-- العنوان الرئيسي -->
+    <h1 class="glitch-title" data-text="HACKED BY ISLEM HD">HACKED BY ISLEM HD</h1>
+    
+    <!-- النص العنيف بخط تقطير الدم -->
+    <div class="danger-text">FUCK U SERVER</div>
+
+    <!-- زر الديسكورد المضاف -->
+    <a href="https://DISCORD.GG/ISLAMHD" target="_blank" class="discord-btn">DISCORD.GG/ISLAMHD</a>
+    
+    <!-- التوقيع -->
+    <div class="hacker-king">
+      <span>ISLEM HD</span> — The Hacker King
+    </div>
+  </div>
+
+  <script>
+    // تشغيل الصوت عند التفاعل
+    document.addEventListener("click", function () {
+      var video = document.getElementById("bgVideo");
+      if (video.muted) {
+        video.muted = false; 
+      }
+    });
+
+    // سكريبت للوميض المرعب المفاجئ
+    const flash = document.getElementById('flash');
+    setInterval(() => {
+      // احتمال 5% أن تومض الشاشة باللون الأحمر الفاقع
+      if (Math.random() > 0.95) {
+        flash.style.opacity = '0.8';
+        setTimeout(() => {
+          flash.style.opacity = '0';
+        }, 80); // يختفي بسرعة كالبرق
+      }
+    }, 1500);
+  </script>
+
+</body>
+
+</html>
